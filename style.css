@@ -1,0 +1,45 @@
+
+.hangman-box{
+    border: red solid;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.letter-box{
+    border: brown solid;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap:2px;
+    margin-left: 250px;
+    width: 30%;
+    
+}
+
+.letters{
+    border: solid green;
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    margin: 1px;
+}
+
+.game-box{
+    border: purple solid;
+}
+
+#answer{
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+}
+
+.container{
+    border: blue solid;
+}
+
+p{
+    border: tomato solid;
+    margin: -20px 90% 10px 0
+}
