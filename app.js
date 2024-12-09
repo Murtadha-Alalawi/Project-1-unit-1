@@ -4,9 +4,24 @@ let answerText = document.querySelector("#answer")
 
 let answer = null
 
+word = [
+    ["CAT","DOG","FISH"],
+    ["BURGER","PIZZA","PASTA"],
+    ["BAHRAIN","SPAIN","BRAZIL"],
+]
+  
+let randomCategory = word[Math.floor(Math.random() * word.length)]
+console.log(randomCategory)
 
 startButton.addEventListener("click", (event) => {
-      answer = "CAT"
+    
+    console.log(word.length)
+      answer = randomCategory[Math.floor(
+        Math.random() * randomCategory.length)
+      ]
+
+      
+
       
      
       for(let i = 0; i < answer.length; i++){
@@ -34,13 +49,15 @@ startButton.addEventListener("click", (event) => {
     function checkLetter(letter){
         for(let i = 0; i < answer.length; i++){
             if(answer[i] === letter){
-                console.log(answerLetters[i])
                 answerLetters[i].textContent = answer[i]
             }
         }
-    
     }
 })
 
+
+
+
 const letterButtons = document.querySelectorAll(".letters")
+
 
