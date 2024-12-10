@@ -53,14 +53,38 @@ startButton.addEventListener("click", (event) => {
             checkLetter(event.target.innerText)
         })
     }) 
+
+
+    let arrayWrongLetters = []
+    const wrongLetterElement = document.querySelector("#wrong-letters")
     
+    wrongLetter = document.querySelector(".used-letters")
     
     function checkLetter(letter){
+        let correct = true
         for(let i = 0; i < answer.length; i++){
             if(answer[i] === letter){
                 answerLetters[i].textContent = answer[i]
+                correct = true
+            }
+            else if(answer !== letter && !arrayWrongLetters.includes(letter)){
+                correct = false
+
+            
+
+                // wrongLetter.textContent = letter
             }
         }
+        if(correct == false){
+            arrayWrongLetters.push(letter)
+            wrongLetterElement.textContent = ""
+            arrayWrongLetters.forEach((element)=>{
+                const newPElement = document.createElement("p")
+                newPElement.textContent = element
+                wrongLetterElement.appendChild(newPElement)
+            })
+        }
+       
     }
 })
 

@@ -48,3 +48,9 @@
     flex-direction: column;
     width: 25%;
 }
+
+#wrong-letters{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
