@@ -20,9 +20,18 @@ startButton.addEventListener("click", (event) => {
         Math.random() * randomCategory.length)
       ]
 
+      let hint = document.querySelector("#hint")
       
+      if(randomCategory === word[0]){
+        hint.textContent = "animal"
+      }
+      else if(randomCategory === word[1]){
+        hint.textContent = "food"
+      }
+      else if(randomCategory === word[2]){
+        hint.textContent = "country"
+      }
 
-      
      
       for(let i = 0; i < answer.length; i++){
         let div = document.createElement('div')
