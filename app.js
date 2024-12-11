@@ -73,15 +73,29 @@ startButton.addEventListener("click", (event) => {
     
     function checkLetter(letter){
         let correct = true
+        let arrayedAnswer = answer.split("")
+        
         for(let i = 0; i < answer.length; i++){
             if(answer[i] === letter){
                 answerLetters[i].textContent = answer[i]
                 correct = true
+                return
             }
             else if(answer !== letter && !arrayWrongLetters.includes(letter)){
                 correct = false
-             
-             liveCounter.textContent-=1
+            }
+
+        
+        }
+        if(correct == false){
+            arrayWrongLetters.push(letter)
+            wrongLetterElement.textContent = ""
+            arrayWrongLetters.forEach((element)=>{
+                const newPElement = document.createElement("p")
+                newPElement.textContent = element
+                wrongLetterElement.appendChild(newPElement)
+            })
+            liveCounter.textContent-=1
              
              if(liveCounter.textContent == 5){
                 hangManImage.src = "hangman-images/hangman-image-2.jpg";
@@ -101,20 +115,6 @@ startButton.addEventListener("click", (event) => {
              if(liveCounter.textContent == 0){
                 hangManImage.src = "hangman-images/hangman-image-7.jpg";
              }
-             
-                break
-            }
-
-        
-        }
-        if(correct == false){
-            arrayWrongLetters.push(letter)
-            wrongLetterElement.textContent = ""
-            arrayWrongLetters.forEach((element)=>{
-                const newPElement = document.createElement("p")
-                newPElement.textContent = element
-                wrongLetterElement.appendChild(newPElement)
-            })
         }
        
     }
