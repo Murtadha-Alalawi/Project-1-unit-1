@@ -28,7 +28,9 @@
     border: purple solid;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 75%;
+    align-self: center;
 }
 
 #answer{
@@ -52,5 +54,5 @@
 #wrong-letters{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }

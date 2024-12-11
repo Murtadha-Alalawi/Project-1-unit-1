@@ -9,6 +9,9 @@ word = [
     ["BURGER","PIZZA","PASTA"],
     ["BAHRAIN","SPAIN","BRAZIL"],
 ]
+
+
+
   
 let randomCategory = word[Math.floor(Math.random() * word.length)]
 console.log(randomCategory)
@@ -43,7 +46,7 @@ startButton.addEventListener("click", (event) => {
      
       const answerLetters = document.querySelectorAll(".answer-letter")
       
-
+      
 
       letterButtons.forEach((letterButton)=>{
         letterButton.addEventListener("click", (event)=>{
@@ -51,6 +54,8 @@ startButton.addEventListener("click", (event) => {
                 return
             }
             checkLetter(event.target.innerText)
+
+           
         })
     }) 
 
@@ -58,7 +63,13 @@ startButton.addEventListener("click", (event) => {
     let arrayWrongLetters = []
     const wrongLetterElement = document.querySelector("#wrong-letters")
     
-    wrongLetter = document.querySelector(".used-letters")
+    let liveCounter = document.querySelector("#live-counter")
+
+    let hangManImage = document.querySelector("#img")
+
+    
+   
+    
     
     function checkLetter(letter){
         let correct = true
@@ -69,11 +80,32 @@ startButton.addEventListener("click", (event) => {
             }
             else if(answer !== letter && !arrayWrongLetters.includes(letter)){
                 correct = false
-
-            
-
-                // wrongLetter.textContent = letter
+             
+             liveCounter.textContent-=1
+             
+             if(liveCounter.textContent == 5){
+                hangManImage.src = "hangman-images/hangman-image-2.jpg";
+             }
+             if(liveCounter.textContent == 4){
+                hangManImage.src = "hangman-images/hangman-image-3.jpg";
+             }
+             if(liveCounter.textContent == 3){
+                hangManImage.src = "hangman-images/hangman-image-4.jpg";
+             }
+             if(liveCounter.textContent == 2){
+                hangManImage.src = "hangman-images/hangman-image-5.jpg";
+             }
+             if(liveCounter.textContent == 1){
+                hangManImage.src = "hangman-images/hangman-image-6.jpg";
+             }
+             if(liveCounter.textContent == 0){
+                hangManImage.src = "hangman-images/hangman-image-7.jpg";
+             }
+             
+                break
             }
+
+        
         }
         if(correct == false){
             arrayWrongLetters.push(letter)
@@ -87,9 +119,6 @@ startButton.addEventListener("click", (event) => {
        
     }
 })
-
-
-
 
 const letterButtons = document.querySelectorAll(".letters")
 
