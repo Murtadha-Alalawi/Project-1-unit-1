@@ -2,6 +2,9 @@ let startButton = document.querySelector("#start")
 
 let answerText = document.querySelector("#answer")
 
+const answerLetters = document.querySelectorAll(".answer-letter")
+
+
 let answer = null
 
 word = [
@@ -10,13 +13,40 @@ word = [
     ["BAHRAIN","SPAIN","BRAZIL"],
 ]
 
-
+let completeAnswer = document.querySelectorAll("answer-letter")
 
   
 let randomCategory = word[Math.floor(Math.random() * word.length)]
 console.log(randomCategory)
 
+
+
 startButton.addEventListener("click", (event) => {
+
+
+    function checkWinner(){
+
+        console.log(answerLetters)
+        console.log(answer)
+
+        let correctCount = 0;
+
+        answerLetters.forEach((oneElement)=>{
+            // console.log(oneElement.textContent)
+            
+            if(oneElement.textContent !== "_"){
+                correctCount+=1
+            }
+        })
+        if(correctCount === answer.length){
+            console.log("YOU WIn")
+        }
+    
+    }
+    
+
+
+
     
     console.log(word.length)
       answer = randomCategory[Math.floor(
@@ -46,6 +76,7 @@ startButton.addEventListener("click", (event) => {
      
       const answerLetters = document.querySelectorAll(".answer-letter")
       
+     
       
 
       letterButtons.forEach((letterButton)=>{
@@ -54,6 +85,7 @@ startButton.addEventListener("click", (event) => {
                 return
             }
             checkLetter(event.target.innerText)
+            checkWinner()
 
            
         })
@@ -68,14 +100,41 @@ startButton.addEventListener("click", (event) => {
     let hangManImage = document.querySelector("#img")
 
     
-   
+  
     
     
     function checkLetter(letter){
         let correct = true
         let arrayedAnswer = answer.split("")
+
+        let myObjWord = {}
+
+        arrayedAnswer.forEach((letter)=>{
+            if(myObjWord[letter]){
+                myObjWord[letter]+= 1
+            }
+            else{
+                myObjWord[letter] = 1
+            }
+        })
+        console.log(myObjWord)
         
         for(let i = 0; i < answer.length; i++){
+            if(answer[i] === letter && myObjWord[letter] >1){
+                console.log("in first condition")
+                arrayedAnswer.forEach((eachLetter,index)=>{
+                    console.log('in loop')
+                    if(eachLetter === letter){
+                        console.log('in loop and inner condition')
+
+
+                        answerLetters[index].textContent = answer[index]
+                    }
+                })
+                correct = true
+                return
+
+            }
             if(answer[i] === letter){
                 answerLetters[i].textContent = answer[i]
                 correct = true
@@ -85,6 +144,9 @@ startButton.addEventListener("click", (event) => {
                 correct = false
             }
 
+            if (answerLetters[i].textContent == answer[i]){
+                console.log("You win")
+            }
         
         }
         if(correct == false){
@@ -114,6 +176,7 @@ startButton.addEventListener("click", (event) => {
              }
              if(liveCounter.textContent == 0){
                 hangManImage.src = "hangman-images/hangman-image-7.jpg";
+                console.log("You lose")
              }
         }
        
