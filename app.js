@@ -4,6 +4,7 @@ let answerText = document.querySelector("#answer")
 
 const answerLetters = document.querySelectorAll(".answer-letter")
 
+let resetButton = document.querySelector("#reset")
 
 let answer = null
 
@@ -23,6 +24,7 @@ console.log(randomCategory)
 
 startButton.addEventListener("click", (event) => {
 
+startButton.disabled = true;
 
     function checkWinner(){
 
@@ -32,7 +34,7 @@ startButton.addEventListener("click", (event) => {
         let correctCount = 0;
 
         answerLetters.forEach((oneElement)=>{
-            // console.log(oneElement.textContent)
+            
             
             if(oneElement.textContent !== "_"){
                 correctCount+=1
@@ -40,6 +42,7 @@ startButton.addEventListener("click", (event) => {
         })
         if(correctCount === answer.length){
             console.log("YOU WIn")
+            
         }
     
     }
@@ -100,6 +103,26 @@ startButton.addEventListener("click", (event) => {
     let hangManImage = document.querySelector("#img")
 
     
+    resetButton.addEventListener("click", (replay)=>{
+        answer = null
+        arrayWrongLetters = []
+
+        gameStateReset();
+
+
+        hint.textContent = ""
+        answerText.innerHTML = ""
+        wrongLetterElement.innerHTML = ""
+        liveCounter.textContent = 6
+        hangManImage.src = "hangman-images/hangman-image-1.jpg"
+        startButton.disabled = false;
+
+
+})
+
+function gameStateReset() {
+    completeAnswer = []
+}
   
     
     
@@ -117,6 +140,11 @@ startButton.addEventListener("click", (event) => {
                 myObjWord[letter] = 1
             }
         })
+        
+        
+
+        
+        
         console.log(myObjWord)
         
         for(let i = 0; i < answer.length; i++){
@@ -144,9 +172,7 @@ startButton.addEventListener("click", (event) => {
                 correct = false
             }
 
-            if (answerLetters[i].textContent == answer[i]){
-                console.log("You win")
-            }
+           
         
         }
         if(correct == false){
@@ -156,6 +182,7 @@ startButton.addEventListener("click", (event) => {
                 const newPElement = document.createElement("p")
                 newPElement.textContent = element
                 wrongLetterElement.appendChild(newPElement)
+                
             })
             liveCounter.textContent-=1
              
@@ -185,4 +212,7 @@ startButton.addEventListener("click", (event) => {
 
 const letterButtons = document.querySelectorAll(".letters")
 
+
+
+    
 
