@@ -18,7 +18,7 @@ let completeAnswer = document.querySelectorAll("answer-letter")
 
   
 let randomCategory = word[Math.floor(Math.random() * word.length)]
-console.log(randomCategory)
+
 
 
 
@@ -28,8 +28,7 @@ startButton.disabled = true;
 
     function checkWinner(){
 
-        console.log(answerLetters)
-        console.log(answer)
+        
 
         let correctCount = 0;
 
@@ -41,7 +40,7 @@ startButton.disabled = true;
             }
         })
         if(correctCount === answer.length){
-            console.log("YOU WIn")
+            console.log("You win")
             
         }
     
@@ -104,26 +103,13 @@ startButton.disabled = true;
 
     
     resetButton.addEventListener("click", (replay)=>{
-        answer = null
-        arrayWrongLetters = []
-
-        gameStateReset();
-
-
-        hint.textContent = ""
-        answerText.innerHTML = ""
-        wrongLetterElement.innerHTML = ""
-        liveCounter.textContent = 6
-        hangManImage.src = "hangman-images/hangman-image-1.jpg"
-        startButton.disabled = false;
-
+        window.location.reload()
+        
+       
 
 })
 
-function gameStateReset() {
-    completeAnswer = []
-}
-  
+
     
     
     function checkLetter(letter){
@@ -145,15 +131,14 @@ function gameStateReset() {
 
         
         
-        console.log(myObjWord)
         
         for(let i = 0; i < answer.length; i++){
             if(answer[i] === letter && myObjWord[letter] >1){
-                console.log("in first condition")
+                
                 arrayedAnswer.forEach((eachLetter,index)=>{
-                    console.log('in loop')
+                    
                     if(eachLetter === letter){
-                        console.log('in loop and inner condition')
+                        
 
 
                         answerLetters[index].textContent = answer[index]
