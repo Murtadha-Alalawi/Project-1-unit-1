@@ -6,12 +6,14 @@ const answerLetters = document.querySelectorAll(".answer-letter")
 
 let resetButton = document.querySelector("#reset")
 
+let winLoseCondition = document.querySelector("#win-lose")
+
 let answer = null
 
 word = [
-    ["CAT","DOG","FISH"],
-    ["BURGER","PIZZA","PASTA"],
-    ["BAHRAIN","SPAIN","BRAZIL"],
+    ["CAT","DOG","FISH","FROG","ZEBRA","TURTLE"],
+    ["BURGER","PIZZA","PASTA","TACO","SOUP","STEAK"],
+    ["BAHRAIN","SPAIN","BRAZIL","SINGAPORE","SAUDIARABIA"],
 ]
 
 let completeAnswer = document.querySelectorAll("answer-letter")
@@ -40,7 +42,7 @@ startButton.disabled = true;
             }
         })
         if(correctCount === answer.length){
-            console.log("You win")
+            winLoseCondition.textContent = `You win`
             
         }
     
@@ -89,6 +91,7 @@ startButton.disabled = true;
             checkLetter(event.target.innerText)
             checkWinner()
 
+
            
         })
     }) 
@@ -105,7 +108,10 @@ startButton.disabled = true;
     resetButton.addEventListener("click", (replay)=>{
         window.location.reload()
         
-       
+ 
+    
+        
+            
 
 })
 
@@ -127,7 +133,7 @@ startButton.disabled = true;
             }
         })
         
-        
+       
 
         
         
@@ -188,7 +194,8 @@ startButton.disabled = true;
              }
              if(liveCounter.textContent == 0){
                 hangManImage.src = "hangman-images/hangman-image-7.jpg";
-                console.log("You lose")
+                winLoseCondition.textContent = `You lose the correct answer was ${answer}`
+             
              }
         }
        
@@ -198,6 +205,4 @@ startButton.disabled = true;
 const letterButtons = document.querySelectorAll(".letters")
 
 
-
-    
 

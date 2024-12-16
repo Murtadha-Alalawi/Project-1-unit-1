@@ -1,62 +1,99 @@
 
 .hangman-box{
-    border: red solid;
+    border: solid black;
+    border-radius: 5%;
+    background-color: yellow;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: 100px;
+    width: 100%
 }
 
 .letter-box{
-    border: brown solid;
+    
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap:2px;
+    width: 100%;
     width: 30%;
     
 }
 
 .letters{
-    border: solid green;
     display: flex;
     flex-direction: center;
     align-items: center;
     margin: 1px;
+    background-color: aqua;
+    
+}
+
+.letters:hover{
+    transform: scale(1.2);
 }
 
 .game-box{
-    border: purple solid;
+    border: solid black;
     display: flex;
     flex-direction: row-reverse;
+    flex-wrap: wrap;
     justify-content: space-between;
-    width: 75%;
+    margin: 0 20% 0 20%; 
     align-self: center;
+    background-color: purple;
 }
 
 #answer{
     display: flex;
     justify-content: space-between;
     width: 100px;
+    gap:10px;
 }
 
+#answer
+
 .container{
-    border: blue solid;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .navigate{
-    border: green solid;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     width: 25%;
 }
 
+
+
 #wrong-letters{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    gap:10px;
+    font-weight: bold;
+    
 }
 
 #reset{
     margin-top: 20px;
+}
+
+#live-box{
+    height: 50%;
+    display: flex;
+    gap: 10px;
+}
+
+#win-lose{
+    display: flex;
+    flex-wrap: wrap;
+    width: 25%;
+    
+}
+
+img{
+    border-radius: 10%;
 }
