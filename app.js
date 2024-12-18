@@ -175,7 +175,9 @@ startButton.disabled = true;
                 wrongLetterElement.appendChild(newPElement)
                 
             })
-            liveCounter.textContent-=1
+            if (liveCounter.textContent>0){
+                liveCounter.textContent-=1
+            }
              
              if(liveCounter.textContent == 5){
                 hangManImage.src = "hangman-images/hangman-image-2.jpg";
